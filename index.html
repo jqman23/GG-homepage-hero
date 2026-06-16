@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Overlay</title>
+
+<!-- FORCE LOAD THE REAL MONTSERRAT (required to match PNG) -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- PRELOAD THE OVERLAY BACKGROUND IMAGE (makes it feel instant) -->
+<link rel="preload" as="image" href="https://custom.cvent.com/AE944F71438646268B70FF5BF3772347/files/event/e7d15afcf2b14901ab0272ce8a401899/f36476d549644a069f9f7fb101cf2603.png">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="heroOverlay">
+  <!-- CACHE WARMER (forces early fetch + decode so no "top-to-bottom" paint feeling) -->
+  <img
+    id="preloadOverlayBg"
+    src="https://custom.cvent.com/AE944F71438646268B70FF5BF3772347/files/event/e7d15afcf2b14901ab0272ce8a401899/f36476d549644a069f9f7fb101cf2603.png"
+    alt=""
+    decoding="async"
+    fetchpriority="high"
+  >
+
+  <img
+    src="https://custom.cvent.com/AE944F71438646268B70FF5BF3772347/files/event/e7d15afcf2b14901ab0272ce8a401899/2c2e87955ad14ac384d383fd6351af30.png"
+    id="heroImage"
+    alt="Hero Background"
+  >
+
+  <div id="overlayText">
+    A <span class="strong">bold</span> new space for
+    <span id="rotatingWrapper">
+      <span id="ghost">global transformation</span>
+      <span id="rotatingMask">
+        <span id="rotatingWord"></span>
+      </span>
+    </span>
+  </div>
+
+  <!-- CLICK TARGET (icon stays exactly as before) -->
+  <button id="titleIconLink" aria-label="Watch the video">
+    <img
+      src="https://custom.cvent.com/AE944F71438646268B70FF5BF3772347/files/event/e7d15afcf2b14901ab0272ce8a401899/58a0940ba62a42db9cfbbf1bac36d979.png"
+      alt=""
+      id="titleIcon"
+    >
+  </button>
+
+  <!-- VIDEO OVERLAY MODAL -->
+  <div id="videoOverlay" aria-hidden="true">
+    <button id="closeVideo" aria-label="Close video">✕</button>
+
+    <div id="videoWrapper">
+      <iframe
+        src=""
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -85,21 +85,21 @@
   forceCloseVideoIfMobile();
 
   /* =========================
-     AUTO-HEIGHT: tell the parent page how tall we are
+     AUTO-HEIGHT: report our true, font-settled height to the parent
      (parent listens for e.data.ggWidgetHeight)
+     First report waits for Montserrat so there's no post-swap reflow bump.
      ========================= */
-  const heroEl = document.getElementById("heroOverlay");
-
-  function postHeight() {
-    if (window.parent === window) return; // not embedded
-    const h = Math.ceil(heroEl.getBoundingClientRect().height);
-    window.parent.postMessage({ ggWidgetHeight: h }, "*");
+  function postH() {
+    var h = Math.ceil(document.documentElement.getBoundingClientRect().height);
+    parent.postMessage({ ggWidgetHeight: h }, "*");
   }
-
-  // Fires whenever the hero changes size (incl. the hero image finishing load)
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(postH);   // first report after Montserrat is loaded
+  } else {
+    window.addEventListener("load", postH);
+  }
   if (window.ResizeObserver) {
-    new ResizeObserver(postHeight).observe(heroEl);
+    new ResizeObserver(postH).observe(document.body);
+  } else {
+    window.addEventListener("resize", postH);
   }
-  window.addEventListener("load", postHeight);
-  window.addEventListener("resize", postHeight);
-  postHeight();

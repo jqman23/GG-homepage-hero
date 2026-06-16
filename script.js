@@ -83,3 +83,23 @@
   }
   window.addEventListener("resize", forceCloseVideoIfMobile);
   forceCloseVideoIfMobile();
+
+  /* =========================
+     AUTO-HEIGHT: tell the parent page how tall we are
+     (parent listens for e.data.ggWidgetHeight)
+     ========================= */
+  const heroEl = document.getElementById("heroOverlay");
+
+  function postHeight() {
+    if (window.parent === window) return; // not embedded
+    const h = Math.ceil(heroEl.getBoundingClientRect().height);
+    window.parent.postMessage({ ggWidgetHeight: h }, "*");
+  }
+
+  // Fires whenever the hero changes size (incl. the hero image finishing load)
+  if (window.ResizeObserver) {
+    new ResizeObserver(postHeight).observe(heroEl);
+  }
+  window.addEventListener("load", postHeight);
+  window.addEventListener("resize", postHeight);
+  postHeight();

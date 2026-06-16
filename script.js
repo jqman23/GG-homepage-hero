@@ -87,19 +87,31 @@
   /* =========================
      AUTO-HEIGHT: report our true, font-settled height to the parent
      (parent listens for e.data.ggWidgetHeight)
-     First report waits for Montserrat so there's no post-swap reflow bump.
+     - First report waits for Montserrat so there's no post-swap reflow bump.
+     - Reports are coalesced to one per animation frame and a >1px dead-band,
+       so the width<->height resize loop doesn't spam the parent.
      ========================= */
-  function postH() {
+  var lastH = 0, rafId = 0;
+
+  function measureAndPost() {
+    rafId = 0;
     var h = Math.ceil(document.documentElement.getBoundingClientRect().height);
+    if (Math.abs(h - lastH) <= 1) return;   // ignore sub-pixel jitter
+    lastH = h;
     parent.postMessage({ ggWidgetHeight: h }, "*");
   }
+
+  function schedulePost() {
+    if (!rafId) rafId = requestAnimationFrame(measureAndPost);
+  }
+
   if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(postH);   // first report after Montserrat is loaded
+    document.fonts.ready.then(schedulePost);   // first report after Montserrat is loaded
   } else {
-    window.addEventListener("load", postH);
+    window.addEventListener("load", schedulePost);
   }
   if (window.ResizeObserver) {
-    new ResizeObserver(postH).observe(document.body);
+    new ResizeObserver(schedulePost).observe(document.body);
   } else {
-    window.addEventListener("resize", postH);
+    window.addEventListener("resize", schedulePost);
   }

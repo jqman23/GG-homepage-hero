@@ -161,6 +161,33 @@
     transform: translateX(3px);
   }
 
+  /* SECONDARY LINK: subtle, underlined, centered under the CTA */
+  #alreadyRegistered {
+    position: absolute;
+    top: 7.6vw;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.85vw;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: #122345;
+    opacity: 0.7;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    white-space: nowrap;
+    z-index: 15;
+    transition: opacity 0.18s ease;
+  }
+
+  #alreadyRegistered:hover {
+    opacity: 1;
+  }
+
   /* ICON (unchanged behavior) */
   #titleIconLink {
     position: absolute;
@@ -251,5 +278,9 @@
       white-space: normal;
       max-width: 80vw;
       text-align: center;
+    }
+    #alreadyRegistered {
+      font-size: 2vw;
+      top: 13vw;
     }
   }

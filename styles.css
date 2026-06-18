@@ -45,7 +45,7 @@
 
   #overlayText {
     position: absolute;
-    bottom: 8vw;
+    bottom: 16vw;
     left: 10vw;
     font-family: "Montserrat", sans-serif;
     font-size: 2.5vw;
@@ -101,44 +101,6 @@
   @keyframes wipeOutVertical {
     0% { transform: translateY(0); opacity: 1; }
     100% { transform: translateY(100%); opacity: 0; }
-  }
-
-  /* REGISTRATION CTA (matches rotating-pill language) */
-  #registerCta {
-    position: absolute;
-    bottom: 13vw;
-    left: 10vw;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
-    font-family: "Montserrat", sans-serif;
-    font-size: 1.7vw;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    line-height: 1;
-    color: #122345;
-    background: #bebe7b;
-    border-radius: 0.18em;
-    padding: 0.75em 1.5em;
-    text-decoration: none;
-    white-space: nowrap;
-    z-index: 15;
-    box-shadow: 0 6px 18px rgba(18, 35, 69, 0.28);
-    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
-  }
-
-  #registerCta .arrow {
-    transition: transform 0.18s ease;
-  }
-
-  #registerCta:hover {
-    transform: translateY(-2px) scale(1.03);
-    background: #c9c98c;
-    box-shadow: 0 9px 24px rgba(18, 35, 69, 0.34);
-  }
-
-  #registerCta:hover .arrow {
-    transform: translateX(3px);
   }
 
   /* ICON (unchanged behavior) */
@@ -222,15 +184,5 @@
     }
     #videoOverlay.active {
       display: none !important;
-    }
-    /* Move the tagline down a touch to open room for the CTA on phones */
-    #overlayText {
-      bottom: 6vw;
-    }
-    /* Keep the CTA tappable + readable, clear of the title art */
-    #registerCta {
-      font-size: 3vw;
-      padding: 0.65em 1.4em;
-      bottom: 14vw;
     }
   }

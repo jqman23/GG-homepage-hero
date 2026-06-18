@@ -19,7 +19,7 @@
   setInterval(cycle, 3000);
 
   /* =========================
-     CLICK TRACKING (ONE PER SESSION)
+     CLICK TRACKING
      ========================= */
   let visitorIP = '', visitorCountry = '', visitorState = '', visitorCity = '';
 
@@ -38,12 +38,6 @@
     "https://script.google.com/macros/s/AKfycbxq8HofSFbnFxS7HeKQKZVhyuPIqpu_7NAWhvOzAXBzyxfatdeJu8hfGCRCahOINshA/exec";
 
   function trackHeroClick(buttonName) {
-    const sessionKey = `${buttonName}_tracked`;
-
-    // Only send once per browser session per button
-    if (sessionStorage.getItem(sessionKey)) return;
-    sessionStorage.setItem(sessionKey, "1");
-
     const params = new URLSearchParams({
       sheet:   "2026Registration",
       button:  buttonName,
@@ -60,6 +54,12 @@
   }
 
   function trackVideoClick() {
+    const sessionKey = "Hero_Image_BrandVideo_tracked";
+
+    // Only send Brand Video once per browser session
+    if (sessionStorage.getItem(sessionKey)) return;
+    sessionStorage.setItem(sessionKey, "1");
+
     trackHeroClick("Hero_Image_BrandVideo");
   }
 
@@ -67,11 +67,20 @@
     trackHeroClick("Hero_Image_RegisterNow");
   }
 
+  function trackAlreadyRegisteredClick() {
+    trackHeroClick("Hero_Image_AlreadyRegistered");
+  }
+
   /* REGISTRATION CTA */
   const registerBtn = document.getElementById("registerCta");
+  const alreadyRegisteredBtn = document.getElementById("alreadyRegistered");
 
   if (registerBtn) {
     registerBtn.addEventListener("click", trackRegisterClick);
+  }
+
+  if (alreadyRegisteredBtn) {
+    alreadyRegisteredBtn.addEventListener("click", trackAlreadyRegisteredClick);
   }
 
   /* VIDEO OPEN / CLOSE */

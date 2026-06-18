@@ -1,0 +1,2 @@
+Trigger Vercel redeploy for GG-homepage-hero on 2026-06-18.
+Current repo CSS has #ctaGroup left: 6vw; this commit forces Vercel to rebuild from main.

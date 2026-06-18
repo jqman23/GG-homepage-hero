@@ -103,6 +103,45 @@
     100% { transform: translateY(100%); opacity: 0; }
   }
 
+  /* REGISTRATION CTA (top center, in the open space) */
+  #registerCta {
+    position: absolute;
+    top: 3vw;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.7vw;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    color: #122345;
+    background: #bebe7b;
+    border-radius: 0.18em;
+    padding: 0.75em 1.5em;
+    text-decoration: none;
+    white-space: nowrap;
+    z-index: 15;
+    box-shadow: 0 6px 18px rgba(18, 35, 69, 0.28);
+    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  #registerCta .arrow {
+    transition: transform 0.18s ease;
+  }
+
+  #registerCta:hover {
+    transform: translateX(-50%) translateY(-2px) scale(1.03);
+    background: #c9c98c;
+    box-shadow: 0 9px 24px rgba(18, 35, 69, 0.34);
+  }
+
+  #registerCta:hover .arrow {
+    transform: translateX(3px);
+  }
+
   /* ICON (unchanged behavior) */
   #titleIconLink {
     position: absolute;
@@ -184,5 +223,11 @@
     }
     #videoOverlay.active {
       display: none !important;
+    }
+    /* Keep the CTA readable + tappable on phones */
+    #registerCta {
+      font-size: 3vw;
+      padding: 0.65em 1.4em;
+      top: 4vw;
     }
   }

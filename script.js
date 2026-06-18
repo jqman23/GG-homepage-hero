@@ -54,12 +54,6 @@
   }
 
   function trackVideoClick() {
-    const sessionKey = "Hero_Image_BrandVideo_tracked";
-
-    // Only send Brand Video once per browser session
-    if (sessionStorage.getItem(sessionKey)) return;
-    sessionStorage.setItem(sessionKey, "1");
-
     trackHeroClick("Hero_Image_BrandVideo");
   }
 
@@ -92,7 +86,7 @@
   const VIDEO_SRC = "https://www.youtube.com/embed/MuINCXtjuTk?autoplay=1&rel=0";
 
   openBtn.addEventListener("click", () => {
-    trackVideoClick();         // ✅ sends ip/country/state/city too (once per session)
+    trackVideoClick();         // ✅ sends ip/country/state/city every click
     iframe.src = VIDEO_SRC;
     overlay.classList.add("active");
   });

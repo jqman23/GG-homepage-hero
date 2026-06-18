@@ -267,6 +267,13 @@
      MOBILE: HIDE VIDEO ICON + VIDEO OVERLAY
      ========================================= */
   @media (max-width: 768px) {
+    /* Mobile-only: background image for the whole widget */
+    #heroOverlay {
+      background-image: url("https://custom.cvent.com/AE944F71438646268B70FF5BF3772347/files/event/e7d15afcf2b14901ab0272ce8a401899/95ecdeb786544556be506c99fb8145f9.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
     #titleIconLink {
       display: none !important;
     }

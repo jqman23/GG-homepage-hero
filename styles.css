@@ -45,7 +45,7 @@
 
   #overlayText {
     position: absolute;
-    bottom: 16vw;
+    bottom: 21vw;
     left: 10vw;
     font-family: "Montserrat", sans-serif;
     font-size: 2.5vw;
@@ -106,11 +106,10 @@
   /* REGISTRATION CTA GROUP (full-width bar near top, side margins) */
   #ctaGroup {
     position: absolute;
-    top: 2.8vw;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 5vw;
+    left: 10vw;
     display: inline-block;
-    max-width: 76vw;
+    max-width: 80vw;
     z-index: 15;
   }
 
@@ -125,7 +124,7 @@
     letter-spacing: 0.01em;
     line-height: 1.1;
     color: #122345;
-    background: #bebe7b;
+    background: #a3a35c;
     border-radius: 10px;
     padding: 0.6em 1.15em;
     text-decoration: none;
@@ -157,7 +156,7 @@
   }
 
   #registerCta:hover {
-    background: #c9c98c;
+    background: #b0b067;
     box-shadow: 0 9px 24px rgba(18, 35, 69, 0.34);
   }
 
@@ -174,7 +173,7 @@
   #alreadyRegistered {
     display: inline-block;
     margin-left: 1.4em;
-    background: #9a9a55;
+    background: #82823f;
     border: none;
     cursor: pointer;
     font-family: "Montserrat", sans-serif;
@@ -182,7 +181,7 @@
     font-weight: 600;
     letter-spacing: 0.01em;
     line-height: 1;
-    color: #122345;
+    color: #ffffff;
     padding: 0.55em 1.1em;
     border-radius: 0 0 8px 8px;
     text-decoration: underline;
@@ -192,7 +191,7 @@
   }
 
   #alreadyRegistered:hover {
-    background: #8a8a4b;
+    background: #6f6f37;
   }
 
   /* ICON (unchanged behavior) */

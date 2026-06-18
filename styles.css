@@ -103,89 +103,96 @@
     100% { transform: translateY(100%); opacity: 0; }
   }
 
-  /* REGISTRATION CTA (top center, in the open space) */
-  #registerCta {
+  /* REGISTRATION CTA GROUP (full-width bar near top, side margins) */
+  #ctaGroup {
     position: absolute;
     top: 4vw;
-    left: 50%;
-    transform: translateX(-50%);
-    display: inline-flex;
+    left: 5vw;
+    right: 5vw;
+    z-index: 15;
+  }
+
+  #registerCta {
+    display: flex;
     align-items: center;
-    gap: 0.55em;
+    justify-content: center;
+    gap: 0.6em;
+    box-sizing: border-box;
+    width: 100%;
     font-family: "Montserrat", sans-serif;
-    font-size: 1.2vw;
+    font-size: 1.6vw;
     font-weight: 700;
     letter-spacing: 0.01em;
-    line-height: 1;
+    line-height: 1.1;
     color: #122345;
     background: #bebe7b;
-    border-radius: 8px;
-    padding: 0.8em 1.6em;
+    border-radius: 10px;
+    padding: 0.85em 1.4em;
     text-decoration: none;
-    white-space: nowrap;
-    z-index: 15;
+    text-align: center;
     box-shadow: 0 6px 18px rgba(18, 35, 69, 0.28);
-    animation: ctaGlow 2.4s ease-in-out infinite;
     transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
   }
 
-  /* FLARE: gentle pulsing glow to draw the eye */
-  @keyframes ctaGlow {
-    0%, 100% { box-shadow: 0 6px 18px rgba(18, 35, 69, 0.28), 0 0 0 0 rgba(190, 190, 123, 0.55); }
-    50%      { box-shadow: 0 6px 18px rgba(18, 35, 69, 0.28), 0 0 0 8px rgba(190, 190, 123, 0); }
+  /* LIVE INDICATOR: pulsing green "activity" dot (industry-standard) */
+  #registerCta .liveDot {
+    flex: none;
+    width: 0.72em;
+    height: 0.72em;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+    animation: livePulse 1.6s ease-out infinite;
   }
 
-  #registerCta .arrow,
-  #registerCta .sparkle {
+  @keyframes livePulse {
+    0%   { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+    70%  { box-shadow: 0 0 0 0.7em rgba(34, 197, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+  }
+
+  #registerCta .arrow {
+    flex: none;
     transition: transform 0.18s ease;
   }
 
-  #registerCta .sparkle {
-    color: #187089;
-    animation: ctaSparkle 1.8s ease-in-out infinite;
-  }
-
-  @keyframes ctaSparkle {
-    0%, 100% { opacity: 0.55; transform: scale(0.9) rotate(0deg); }
-    50%      { opacity: 1;    transform: scale(1.15) rotate(15deg); }
-  }
-
   #registerCta:hover {
-    transform: translateX(-50%) translateY(-2px) scale(1.03);
     background: #c9c98c;
     box-shadow: 0 9px 24px rgba(18, 35, 69, 0.34);
-    animation: none;
   }
 
   #registerCta:hover .arrow {
     transform: translateX(3px);
   }
 
-  /* SECONDARY LINK: subtle, underlined, centered under the CTA */
+  /* SECONDARY: darker-green tab adjoined under the left of the banner */
+  #subTabRow {
+    text-align: left;
+    line-height: 0;
+  }
+
   #alreadyRegistered {
-    position: absolute;
-    top: 7.6vw;
-    left: 50%;
-    transform: translateX(-50%);
-    background: none;
+    display: inline-block;
+    margin-left: 1.4em;
+    background: #9a9a55;
     border: none;
-    padding: 0;
     cursor: pointer;
     font-family: "Montserrat", sans-serif;
-    font-size: 0.85vw;
-    font-weight: 500;
+    font-size: 1vw;
+    font-weight: 600;
     letter-spacing: 0.01em;
+    line-height: 1;
     color: #122345;
-    opacity: 0.7;
+    padding: 0.55em 1.1em;
+    border-radius: 0 0 8px 8px;
     text-decoration: underline;
     text-underline-offset: 2px;
     white-space: nowrap;
-    z-index: 15;
-    transition: opacity 0.18s ease;
+    transition: background 0.18s ease;
   }
 
   #alreadyRegistered:hover {
-    opacity: 1;
+    background: #8a8a4b;
   }
 
   /* ICON (unchanged behavior) */
@@ -270,17 +277,12 @@
     #videoOverlay.active {
       display: none !important;
     }
-    /* Phones: smaller text so the longer message fits the narrow width */
+    /* Phones: bump sizing for the narrow width */
     #registerCta {
-      font-size: 2.2vw;
-      padding: 0.6em 1.1em;
-      top: 4.5vw;
-      white-space: normal;
-      max-width: 80vw;
-      text-align: center;
+      font-size: 2.4vw;
+      padding: 0.7em 1em;
     }
     #alreadyRegistered {
-      font-size: 2vw;
-      top: 13vw;
+      font-size: 1.9vw;
     }
   }

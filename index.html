@@ -45,14 +45,16 @@
   </div>
 
   <!-- REGISTRATION CTA -->
-  <a
-    id="registerCta"
-    href="https://cvent.me/2zyRx2"
-    target="_blank"
-    rel="noopener noreferrer"
-  ><span class="sparkle" aria-hidden="true">✦</span> Registration is now open. Register now and receive an early-bird discount. <span class="arrow" aria-hidden="true">→</span></a>
+  <div id="ctaGroup">
+    <a
+      id="registerCta"
+      href="https://cvent.me/2zyRx2"
+      target="_blank"
+      rel="noopener noreferrer"
+    ><span class="liveDot" aria-hidden="true"></span> Registration is now open. Register now and receive an early-bird discount. <span class="arrow" aria-hidden="true">→</span></a>
 
-  <!-- SECONDARY: triggers the parent page's existing "Already registered?" link -->
+    <!-- SECONDARY: triggers the parent page's existing "Already registered?" link -->
+    <div id="subTabRow">
   <button
     id="alreadyRegistered"
     type="button"
@@ -81,6 +83,8 @@
       }
     "
   >Already registered?</button>
+    </div>
+  </div>
 
   <!-- CLICK TARGET (icon stays exactly as before) -->
   <button id="titleIconLink" aria-label="Watch the video">

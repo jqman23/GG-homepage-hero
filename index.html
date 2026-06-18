@@ -58,14 +58,8 @@
   <button
     id="alreadyRegistered"
     type="button"
-    onclick="
-      console.log('TEST 6: sending alreadyRegisteredClick to parent');
-      window.parent.postMessage({
-        ggAction: 'alreadyRegisteredClick',
-        test: 'TEST 6'
-      }, '*');
-    "
-  >Test 6</button>
+    onclick="window.parent.postMessage({ ggAction: 'alreadyRegisteredClick' }, '*');"
+  >Already registered?</button>
     </div>
   </div>
 

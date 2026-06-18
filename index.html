@@ -51,14 +51,40 @@
       href="https://cvent.me/2zyRx2"
       target="_blank"
       rel="noopener noreferrer"
-    ><span class="liveDot" aria-hidden="true"></span> Registration is now open. Register now and receive an early-bird discount. <span class="arrow" aria-hidden="true">→</span></a>
+    ><span class="liveDot" aria-hidden="true"></span> Registration is now open. Register now and receive an early-bird discount. <span class="arrow" aria-hidden="true">â†’</span></a>
 
     <!-- SECONDARY: triggers the parent page's existing "Already registered?" link -->
     <div id="subTabRow">
   <button
     id="alreadyRegistered"
     type="button"
-    onclick="window.parent.postMessage({ ggAction: 'alreadyRegisteredClick' }, '*');"
+    onclick="
+      (function () {
+        try {
+          var parentDoc = window.parent.document;
+          var links = parentDoc.querySelectorAll('a');
+          var realLink = null;
+
+          for (var i = 0; i < links.length; i++) {
+            if (links[i].textContent.trim() === 'Already registered?') {
+              realLink = links[i];
+              break;
+            }
+          }
+
+          if (realLink) {
+            realLink.dispatchEvent(new MouseEvent('click', {
+              bubbles: true,
+              cancelable: true,
+              view: window.parent
+            }));
+            return;
+          }
+        } catch (err) {}
+
+        window.parent.postMessage({ ggAction: 'alreadyRegisteredClick' }, '*');
+      })();
+    "
   >Already registered?</button>
     </div>
   </div>
@@ -74,7 +100,7 @@
 
   <!-- VIDEO OVERLAY MODAL -->
   <div id="videoOverlay" aria-hidden="true">
-    <button id="closeVideo" aria-label="Close video">✕</button>
+    <button id="closeVideo" aria-label="Close video">âœ•</button>
 
     <div id="videoWrapper">
       <iframe

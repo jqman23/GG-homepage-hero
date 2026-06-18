@@ -37,23 +37,41 @@
   const TRACKING_BASE =
     "https://script.google.com/macros/s/AKfycbxq8HofSFbnFxS7HeKQKZVhyuPIqpu_7NAWhvOzAXBzyxfatdeJu8hfGCRCahOINshA/exec";
 
-  const TRACK_SESSION_KEY = "Hero_Image_BrandVideo_tracked";
+  function trackHeroClick(buttonName) {
+    const sessionKey = `${buttonName}_tracked`;
 
-  function trackVideoClick() {
-    // Only send once per browser session
-    if (sessionStorage.getItem(TRACK_SESSION_KEY)) return;
-    sessionStorage.setItem(TRACK_SESSION_KEY, "1");
+    // Only send once per browser session per button
+    if (sessionStorage.getItem(sessionKey)) return;
+    sessionStorage.setItem(sessionKey, "1");
 
     const params = new URLSearchParams({
       sheet:   "2026Registration",
-      button:  "Hero_Image_BrandVideo",
+      button:  buttonName,
       ip:      visitorIP,
       country: visitorCountry,
       state:   visitorState,
       city:    visitorCity
     });
 
-    fetch(`${TRACKING_BASE}?${params.toString()}`, { mode: "no-cors" }).catch(() => {});
+    fetch(`${TRACKING_BASE}?${params.toString()}`, {
+      mode: "no-cors",
+      keepalive: true
+    }).catch(() => {});
+  }
+
+  function trackVideoClick() {
+    trackHeroClick("Hero_Image_BrandVideo");
+  }
+
+  function trackRegisterClick() {
+    trackHeroClick("Hero_Image_RegisterNow");
+  }
+
+  /* REGISTRATION CTA */
+  const registerBtn = document.getElementById("registerCta");
+
+  if (registerBtn) {
+    registerBtn.addEventListener("click", trackRegisterClick);
   }
 
   /* VIDEO OPEN / CLOSE */
@@ -65,7 +83,7 @@
   const VIDEO_SRC = "https://www.youtube.com/embed/MuINCXtjuTk?autoplay=1&rel=0";
 
   openBtn.addEventListener("click", () => {
-    trackVideoClick();         // ✅ now sends ip/country/state/city too (once per session)
+    trackVideoClick();         // ✅ sends ip/country/state/city too (once per session)
     iframe.src = VIDEO_SRC;
     overlay.classList.add("active");
   });

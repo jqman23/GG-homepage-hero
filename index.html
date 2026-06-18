@@ -58,30 +58,7 @@
   <button
     id="alreadyRegistered"
     type="button"
-    onclick="
-      try {
-        var parentDoc = window.parent.document;
-        var links = parentDoc.querySelectorAll('a');
-        var realLink = null;
-        for (var i = 0; i < links.length; i++) {
-          if (links[i].textContent.trim() === 'Already registered?') {
-            realLink = links[i];
-            break;
-          }
-        }
-        if (realLink) {
-          realLink.dispatchEvent(new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-            view: window.parent
-          }));
-        } else {
-          console.warn('Already registered: parent link not found');
-        }
-      } catch (err) {
-        console.error('Already registered error:', err);
-      }
-    "
+    onclick="window.parent.postMessage({ ggAction: 'alreadyRegisteredClick' }, '*');"
   >Already registered?</button>
     </div>
   </div>

@@ -107,7 +107,7 @@
   #ctaGroup {
     position: absolute;
     bottom: 5vw;
-    left: 6vw;
+    left: 6.6vw;
     display: inline-block;
     max-width: 80vw;
     z-index: 15;
@@ -285,3 +285,4 @@
       font-size: 1.9vw;
     }
   }
+

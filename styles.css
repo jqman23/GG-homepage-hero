@@ -106,36 +106,55 @@
   /* REGISTRATION CTA (top center, in the open space) */
   #registerCta {
     position: absolute;
-    top: 3vw;
+    top: 4vw;
     left: 50%;
     transform: translateX(-50%);
     display: inline-flex;
     align-items: center;
-    gap: 0.5em;
+    gap: 0.55em;
     font-family: "Montserrat", sans-serif;
-    font-size: 1.7vw;
+    font-size: 1.2vw;
     font-weight: 700;
     letter-spacing: 0.01em;
     line-height: 1;
     color: #122345;
     background: #bebe7b;
-    border-radius: 0.18em;
-    padding: 0.75em 1.5em;
+    border-radius: 8px;
+    padding: 0.8em 1.6em;
     text-decoration: none;
     white-space: nowrap;
     z-index: 15;
     box-shadow: 0 6px 18px rgba(18, 35, 69, 0.28);
+    animation: ctaGlow 2.4s ease-in-out infinite;
     transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
   }
 
-  #registerCta .arrow {
+  /* FLARE: gentle pulsing glow to draw the eye */
+  @keyframes ctaGlow {
+    0%, 100% { box-shadow: 0 6px 18px rgba(18, 35, 69, 0.28), 0 0 0 0 rgba(190, 190, 123, 0.55); }
+    50%      { box-shadow: 0 6px 18px rgba(18, 35, 69, 0.28), 0 0 0 8px rgba(190, 190, 123, 0); }
+  }
+
+  #registerCta .arrow,
+  #registerCta .sparkle {
     transition: transform 0.18s ease;
+  }
+
+  #registerCta .sparkle {
+    color: #187089;
+    animation: ctaSparkle 1.8s ease-in-out infinite;
+  }
+
+  @keyframes ctaSparkle {
+    0%, 100% { opacity: 0.55; transform: scale(0.9) rotate(0deg); }
+    50%      { opacity: 1;    transform: scale(1.15) rotate(15deg); }
   }
 
   #registerCta:hover {
     transform: translateX(-50%) translateY(-2px) scale(1.03);
     background: #c9c98c;
     box-shadow: 0 9px 24px rgba(18, 35, 69, 0.34);
+    animation: none;
   }
 
   #registerCta:hover .arrow {
@@ -224,10 +243,13 @@
     #videoOverlay.active {
       display: none !important;
     }
-    /* Keep the CTA readable + tappable on phones */
+    /* Phones: smaller text so the longer message fits the narrow width */
     #registerCta {
-      font-size: 3vw;
-      padding: 0.65em 1.4em;
-      top: 4vw;
+      font-size: 2.2vw;
+      padding: 0.6em 1.1em;
+      top: 4.5vw;
+      white-space: normal;
+      max-width: 80vw;
+      text-align: center;
     }
   }

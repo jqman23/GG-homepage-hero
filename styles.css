@@ -116,7 +116,7 @@
   #registerCta {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0.6em;
     font-family: "Montserrat", sans-serif;
     font-size: 1.6vw;
@@ -128,7 +128,7 @@
     border-radius: 7px;
     padding: 0.6em 1.15em;
     text-decoration: none;
-    text-align: center;
+    text-align: left;
     box-shadow: 0 6px 18px rgba(18, 35, 69, 0.28);
     transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
   }

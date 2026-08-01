@@ -69,6 +69,14 @@
   const registerBtn = document.getElementById("registerCta");
   const alreadyRegisteredBtn = document.getElementById("alreadyRegistered");
 
+  /* EARLY-BIRD COPY SWAP: after the deadline passes, drop the early-bird
+     mention and fall back to a generic registration message. */
+  const EARLY_BIRD_DEADLINE = new Date("2026-08-03T00:00:00-04:00"); // end of Aug 2, 2026 ET
+  const registerCtaText = document.getElementById("registerCtaText");
+  if (registerCtaText && new Date() >= EARLY_BIRD_DEADLINE) {
+    registerCtaText.textContent = "Registration is now open. Register now.";
+  }
+
   if (registerBtn) {
     registerBtn.addEventListener("click", trackRegisterClick);
   }

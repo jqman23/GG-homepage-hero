@@ -74,7 +74,7 @@
   const EARLY_BIRD_DEADLINE = new Date("2026-08-03T00:00:00-04:00"); // end of Aug 2, 2026 ET
   const registerCtaText = document.getElementById("registerCtaText");
   if (registerCtaText && new Date() >= EARLY_BIRD_DEADLINE) {
-    registerCtaText.textContent = "Registration is now open. Register now.";
+    registerCtaText.textContent = "Register now and secure your spot.";
   }
 
   if (registerBtn) {

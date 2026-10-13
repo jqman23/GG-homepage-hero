@@ -114,10 +114,7 @@
   }
 
   #eventStatus {
-    display: inline-flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.6em;
+    display: block;
     font-family: "Montserrat", sans-serif;
     font-size: 1.6vw;
     font-weight: 700;
@@ -127,7 +124,6 @@
     background: #c2c28b;
     border-radius: 7px;
     padding: 0.6em 1.15em;
-    text-decoration: none;
     text-align: left;
     box-shadow: 0 6px 18px rgba(18, 35, 69, 0.28);
   }

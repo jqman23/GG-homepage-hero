@@ -57,29 +57,12 @@
     trackHeroClick("Hero_Image_BrandVideo");
   }
 
-  function trackRegisterClick() {
-    trackHeroClick("Hero_Image_RegisterNow");
-  }
-
   function trackAlreadyRegisteredClick() {
     trackHeroClick("Hero_Image_AlreadyRegistered");
   }
 
-  /* REGISTRATION CTA */
-  const registerBtn = document.getElementById("registerCta");
+  /* REGISTERED ATTENDEE ACCESS */
   const alreadyRegisteredBtn = document.getElementById("alreadyRegistered");
-
-  /* EARLY-BIRD COPY SWAP: after the deadline passes, drop the early-bird
-     mention and fall back to a generic registration message. */
-  const EARLY_BIRD_DEADLINE = new Date("2026-08-03T00:00:00-04:00"); // end of Aug 2, 2026 ET
-  const registerCtaText = document.getElementById("registerCtaText");
-  if (registerCtaText && new Date() >= EARLY_BIRD_DEADLINE) {
-    registerCtaText.textContent = "Register now and secure your spot.";
-  }
-
-  if (registerBtn) {
-    registerBtn.addEventListener("click", trackRegisterClick);
-  }
 
   if (alreadyRegisteredBtn) {
     alreadyRegisteredBtn.addEventListener("click", trackAlreadyRegisteredClick);

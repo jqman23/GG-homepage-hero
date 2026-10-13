@@ -103,7 +103,7 @@
     100% { transform: translateY(100%); opacity: 0; }
   }
 
-  /* REGISTRATION CTA GROUP (full-width bar near top, side margins) */
+  /* EVENT STATUS GROUP (full-width bar near top, side margins) */
   #ctaGroup {
     position: absolute;
     bottom: 5vw;
@@ -113,7 +113,7 @@
     z-index: 15;
   }
 
-  #registerCta {
+  #eventStatus {
     display: inline-flex;
     align-items: center;
     justify-content: flex-start;
@@ -130,38 +130,6 @@
     text-decoration: none;
     text-align: left;
     box-shadow: 0 6px 18px rgba(18, 35, 69, 0.28);
-    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
-  }
-
-  /* LIVE INDICATOR: pulsing activity dot */
-  #registerCta .liveDot {
-    flex: none;
-    width: 0.72em;
-    height: 0.72em;
-    border-radius: 50%;
-    background: #122345;
-    box-shadow: 0 0 0 0 rgba(18, 35, 69, 0.55);
-    animation: livePulse 1.6s ease-out infinite;
-  }
-
-  @keyframes livePulse {
-    0%   { box-shadow: 0 0 0 0 rgba(18, 35, 69, 0.55); }
-    70%  { box-shadow: 0 0 0 0.7em rgba(18, 35, 69, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(18, 35, 69, 0); }
-  }
-
-  #registerCta .arrow {
-    flex: none;
-    transition: transform 0.18s ease;
-  }
-
-  #registerCta:hover {
-    background: #cdcd9d;
-    box-shadow: 0 9px 24px rgba(18, 35, 69, 0.34);
-  }
-
-  #registerCta:hover .arrow {
-    transform: translateX(3px);
   }
 
   /* SECONDARY: darker-green tab adjoined under the left of the banner */
@@ -288,7 +256,7 @@
       display: none !important;
     }
     /* Phones: bump sizing for the narrow width */
-    #registerCta {
+    #eventStatus {
       font-size: 2.4vw;
       padding: 0.7em 1em;
     }
